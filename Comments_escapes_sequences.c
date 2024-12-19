@@ -86,5 +86,10 @@ printf("\n \uFFFF \n \uFD66 \n \u00B6 \n \u00d8");
 printf("\n \u11000 \n \u20000");
 //once again, check the encoding of your output tool. 
 
+//=================================added December 19th, 2024=================================//
+printf("=======================================added December 19th, 2024=======================================");
+//to print the special character %, it seems you need to escape it, right like this : 
+printf("\n%%");
+
    return 0 ;
 } 
