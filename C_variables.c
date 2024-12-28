@@ -430,5 +430,232 @@ printf("\n%s",text8);
 /*
 Nothing particular. That's all for today. See you in a bit, i hope. 
 */
+
+/*============================Added Saturday the 28th, of December 2024============================*/
+printf("============================Added Saturday the 28th, of December 2024============================");
+/*
+today I'll like to dive deeper into the arrays, or at least their declaration and basics.
+Since I consider them as variables, or, more exactly, variations of variable, i consider it is equally important
+to learn them at an early stage. Escpecially common traps, like I've seen the last day, with char arrays 
+and the Null terminator byte, leading to a memory overflow.
+I'll like to see 2d arrays, in char, and then in integers. then we we'll see if i don't want to do somethin else. 
+like finding a job. Heh. 
+
+Anyways. 
+Here's how to declare and initialize a 2d char array.
+https://www.codingeek.com/tutorials/c-programming/2d-character-array-string-array-declaration-and-initialization/
+*/
+char dimensions2[5][3]={"flow","mall","pit"};
+/*
+As you can see, since it is a char array, we need to take in consideration that the length of our strings will
+be less to one byte of the declared array. Seen as a table, the array in 2 dimensions will be declared as 
+follows : 
+-First, the lenght of the words ==> 5 here, minus one for the null terminator, leaving us with 4. 
+-Second, how many rows will be declared. ==> 3. There's no other (as far as i'm aware) parameters that would 
+lead to have one row dedicated to a whole technical detail, so, the rows will be as many as declared. 
+Now, how do we print that out ? 
+First, let's try a simple idea.
+*/
+printf("\n%s",dimensions2);
+/*
+This doesn't looks that good. And, it isn't because of the null terminator thing. but just for the sake or if,
+let's do this : 
+*/
+char dimensions21[5][3]={"abc","def","ghi"};
+printf("\n%s",dimensions21);
+/*
+Guess what. I was wrong. the first one is for how many rows will our array contain, and the second one for 
+how many characters will be used. 
+*/
+char dimensions22[5][3]={"io","nb","gt","er","bl"};
+printf("\n%s",dimensions22);
+/*
+What's interesting in here, is that, this the two previous attempt didn't contained null terminators, 
+printing the array didn't stop the code to just print the first array element, but the whole array. 
+This would also mean, that, the array as a whole, since not having null terminator, would respond in an 
+undefined behaviour, being, as seen above, merging altogether the array elements into one. 
+Here, in the last attempt, we only have the first array element. 
+
+Doing errors is important. 
+
+So now, let's try to access any single one of our array element. Usually, this is where we take the famous tool, 
+known as the for loop, but since i haven't learned them in this language, i'll keep doinf things the old, 
+and, mostly, unpractical way. 
+*/
+printf("\n%s",dimensions22[0]);
+/*
+I have already the chance to work with others types of arrays before learning this language, 
+so i already know that arrays indexes starts at 0. and end at arrays size, minus one. in our case, being 4. 
+*/
+printf("\n%s",dimensions22[1]);
+printf("\n%s",dimensions22[2]);
+printf("\n%s",dimensions22[3]);
+printf("\n%s",dimensions22[4]);
+/*
+i could also print it like this : 
+*/
+printf("\n%s\n%s\n%s\n%s\n%s",dimensions22[0],dimensions22[1],dimensions22[2],dimensions22[3],dimensions22[4]);
+/*
+but that means i can't use my favorite tool as efficiently as above. (ctrlc+ctrlv). I mean, both method are doing
+pretty good, but, i think the matter of which one to choose depends on how tight we are on the hardware we're 
+working with. 
+Now, the question everyon wants to seen answered :  We already know what happens when we have too many characters
+in our arrays, not enough characters (not fully filled string of characters), not fully filled rows, but, 
+what happen when we fill too many rows ? 
+I'll also use the other method of 2d array declaration/initialization in the following example.
+*/
+char dimensions23[5][3]={
+{"aa"},
+{"bb"},
+{"cc"},
+{"dd"},
+{"ee"},
+//now, we have all our rows fully loaded, and we will add one more, just for the fun.
+//{"ff"}
+};
+printf("\n%s",dimensions23);
+/*
+Althought i can run this properly without proble SO FAR, i still get a notification in the problems tab of the
+console : 
+[{
+	"resource": "mypath",
+	"owner": "cpptools",
+	"severity": 4,
+	"message": "excess elements in array initializer",
+	"source": "gcc",
+	"startLineNumber": 514,
+	"startColumn": 1,
+	"endLineNumber": 514,
+	"endColumn": 1
+}]
+which falls into the expectable behaviours. I expected an error making the compilation and running impossible.
+This is a really interesting behaviour, it could be useful. Since we're here for the fun of it, let's try to 
+actually access this array element. 
+*/
+printf("\nsupposedly index 6 of dimensions23 : %s",dimensions23[5]);
+/*
+What's interesting is that i do not get any errors, while trying to access a data that isn't supposed to exists. 
+But, since i've initialized it, without declaring it, i guess we're into undefined behaviour territory. 
+Maybe, since the memory space is initialized but not declared, the computer know that there is a space for 
+the index[5] of dimensiosn23, but since it isn't declared, it doens't know where, and print something out of 
+the blue. 
+That's really interesting, i wonder how it could be exploited. 
+one thing that could also be done os to access one specific slot in the array, in the 2d array.
+i'm gonna take back our simple strings of text here, then go back to our 2d arrays. 
+*/
+//printf("\nfirst character of the text6 array : %s",text6[0]);
+/*
+weird, if got the following error : 
+Exception has occurred.
+Segmentation fault
+tried again, but didn't encoutered this error anymore. However, now i'm having a problem 
+with the sixth and undeclared row of dimensions23. 
+back with the segmentation fault. I have to seek knowledge. 
+okay, rookie mistake, as it appears. Since I'm trying to access a single characters, it may be from a string, 
+but the type of data required is a single character, therefore, the specifier i'll need to use will be the 
+one for the single character. Hence : 
+*/
+printf("\nfirst character of the text6 array, using the correct specifier: %c", text6[0]);
+
+/*
+I am encountering quite another problem. Quite ironic. 
+The permission for opening the output file on my own computer is denied. 
+It looks like i need to shut down VSC, delete the application files, and restart VSC to be able to access 
+the output file. 
+I have one track about this. Maybe the sixth row of dimensions23 is messing with the executable file. 
+As far as I'm aware, that's the only thing that could produce such behaviour. 
+looks like it was it. 
+But i'm not THAT sure of it. However, we're accessing our desired data correctly. 
+*/
+printf("\nThe first character of the second row of dimensions22 : %c",dimensions22[1][0]);
+/*
+That wrap it up about the 2d arrays. Let's now seek what are the 3d arrays. 
+https://www.geeksforgeeks.org/multidimensional-arrays-in-c/
+I don't know i i put it down already, but here's how the 3d array works : 
+char dimensions3 [Depth of the 3d arrays, or how many 2d arrays will be stack uponeach others][row][colums, or number of characters]
+so, for something around 
+char dimensions3[9][6][3]
+that's gonna be 9 tables of 6 rows and 3 columns. Or characters. but let's do something a bit more light. 
+Once again, there's 2 syntaxes :  
+*/
+char dimensions3[2][3][5]={
+	//first depth
+	{
+		// 3 rows from there
+		{"plop"},
+		{"flop"},
+		{"dire"}
+	},
+	//second depth
+	{
+		{"fire"},
+		{"sit"},
+		{"dog"},
+	}
+};
+printf("\n%s",dimensions3[0][2]);
+printf("\n%s",dimensions3[0][3]);
+/*
+the interesting behaviour of how the data are printed is once again not disappointing. 
+There's no row that should answer to the index 3, yet, when looking for the fourth row of the first depth, 
+the data printed instead of an error is the first one of the second depth, as if the counting was reported on
+the second layer of our 3d array. 
+*/
+printf("\n%s",dimensions3[1][3]);
+/*
+as expected, since there's nothing else after our 3d array, when asking to get somehting out of the bounds of the
+arrays while referencing the array, nothing's printed. 
+but, we can, with mutiples go from one layer to another, while referencing another one. 
+*/
+printf("\n%s",dimensions3[0][5]);
+printf("\n%c",dimensions3[0][2][2]);
+
+char dimensions31[3][4][6]={"first","layer","end","now","2nd","depth","stops","here","this","is","level","three"};
+//and i hope i know how to count. so let's retry our funny thing. 
+printf("\nprintfs of dimensions31: %s",dimensions31[0][5]);
+printf("\n%s",dimensions31[0][9]);
+printf("\n%s",dimensions31[1][4]);
+printf("\n%s",dimensions31[0][0]);
+printf("\n%s",dimensions31[1][0]);
+printf("\n%s",dimensions31[2][0]);
+/*
+looks like it works. only things left now is to do it for integers too. 
+*/
+int array1d1[5]={1,2,3,4,5};
+printf("\n%d",array1d1[2]);
+
+int array2d1[2][5]={1,2,3,4,5,6,7,8,9,0};
+printf("\n%d\n%d",array2d1[0][0],array2d1[1][4]);
+int array2d2[3][5]={
+	{10,20,30,40},
+	{50,60,70,80},
+	{90,100,200,300}
+};
+printf("\n%d\n%d\n%d",array2d2[0][3],array2d2[1][2],array2d2[2][1]);
+
+int array3d1[2][2][2]={1,2,3,4,5,6,7,8};
+printf("\n%d\n%d\n%d\n%d",array3d1[0][0][1],array3d1[0][1][0],array3d1[1][0][0],array3d1[1][1][0]);
+
+int array3d2[3][2][3]={
+	{
+		{1,2},
+		{}
+	},
+	{
+		{10,20,30},
+		{40,50}
+	},
+	{
+		{100,200,300},
+		{400,500,600}
+	}
+};
+printf("\n%d\n%d\n%d\n%d",array3d2[2][1][2],array3d2[0][1][0],array3d2[1][0][1],array3d2[1][1][2]);
+
+/*
+seems correct to me. There are uninitialized slots, and it seems that uninitialized integers are on 0 by default. 
+so, that's all for today. See you in a bit.g
+*/
+
 return 0;
 }
