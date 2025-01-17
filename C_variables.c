@@ -30,6 +30,9 @@ https://en.wikipedia.org/wiki/Single-precision_floating-point_format
 #include <stdbool.h>
 //Added the following header to be able to play with strings
 #include <string.h>
+//Added toeh following header to be able to play with long double. double and floats worked great. 
+//It doesn't work. 
+//#include <float.h>
 
 int main(){
 //declaration of the variable
@@ -815,7 +818,57 @@ long double pursuit_spacecraft = 12.2;
 long double stealth_ship = 1.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001 ; 
  printf("\n%Lf\n%Lf\n%Lf\n%Lf\v",spaceship,mothership,pursuit_spacecraft,stealth_ship); 
  printf("\n%Lf\n%La\n%Le\n%Lg",spaceship,spaceship,spaceship,spaceship);
- 
+ printf("====================================Added Friday the 17th of January 2025====================================");
+ /*
+ As you can see, mothership is expectedly too large, creating an error where the compiler can't displays it 
+ correctly. However, other long doubles aren't correctly displayed here. But. Since we have many format 
+ specifiers for floats, and its variants (double and long double), I've actually been able to realize that the 
+ varaible is indeed initialized. What seems to be the origin of the problem is the %Lf format specifier. 
+ After seeking knowledge on our dear friend chatgpt, it seems that that the central problem is running around 
+ the compiler not being able to process the desired precision. 
+ Which leaves us with quite a few question. 
+ -I'm using GCC, what's the default long double precision ? 
+ -Can I modify it ? 
+ -How do I specify it ? 
+ To the last, our firend already provided an answer, and I'll test it right away : 
+ */
+printf("\n%.20Lf",spaceship);
+/*
+that doesn't seems to work. 
+Maybe we'll try to reduce it.
+*/
+printf("\n%.2Lf",spaceship);
+/*
+Doesn't work either. 
+our dear friends gifted me more knowledge. There is, apparently macros not recorded in the wikipedia article
+above. I'll first check if the knowledge given to me is correct. 
+*/
+long double long_double_max = __LDBL_MAX__;
+printf("\nLong double max : %Lf\n%Lg",long_double_max,long_double_max);
+
+/*
+there IS some macro for our floating variable types, which onyl leave me with even MORE questions. 
+- what are float and doubles macros ? 
+- Why aren't they recorded in the wikipedia article ? 
+So. let's try first what are our float and double macros. 
+*/
+float float_max = __FLT32_MAX__;
+double double_max = __DBL_MAX__; 
+printf("\n%Lg\n%Lg",float_max,double_max);
+/*
+surprisingly, it also appear, in the tab deployed by VSC using the above header file (<limits.h>) that there's
+more than just maximum value of variables as macros. But that's not something i'll like to see right now.
+Right now, once i've actually corrected my knowledge about wether or not floating variables have macros,
+I just want to know why i can't print them correctly. 
+*/
+
+/*
+while trying to get the size of a long double on my configuration, i also happenned to learn one more thing.
+the %zu format specifier is used as a universal format specifiers to get the size of variables, 
+no matter the configuration. 
+*/
+printf("\n%zu",sizeof(long double));
+
 
 
 return 0;
