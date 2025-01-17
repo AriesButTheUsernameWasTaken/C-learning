@@ -1,4 +1,27 @@
 //here's the tutorial followed in this code : https://www.youtube.com/watch?v=aIQk1O08zpg&list=PLZPZq0r_RZOOzY_vR4zJM32SqsSInGMwe&index=4
+/*
+Archives used : 
+https://stackoverflow.com/questions/50841881/why-is-the-format-in-printf-marked-as-restrict
+https://en.wikipedia.org/wiki/C_data_types
+https://www.youtube.com/shorts/6vNMDb316Ck
+https://www.geeksforgeeks.org/format-specifiers-in-c/
+https://www.geeksforgeeks.org/int_max-int_min-cc-applications/
+https://www.geeksforgeeks.org/climits-limits-h-cc/
+https://www.w3schools.com/c/c_data_types_characters.php
+https://www.spsanderson.com/steveondata/posts/2024-09-18/
+https://www.w3schools.com/charsets/ref_html_ascii.asp
+https://en.wikipedia.org/wiki/ASCII
+https://en.wikipedia.org/wiki/Extended_ASCII#/media/File:Table_ascii_extended.png
+https://stackoverflow.com/questions/3200954/what-is-char-bit
+https://gustedt.wordpress.com/2010/06/01/how-many-bits-has-a-byte/
+https://en.wikipedia.org/wiki/Code_page_850
+https://en.wikipedia.org/wiki/UTF-8
+https://www.codingeek.com/tutorials/c-programming/2d-character-array-string-array-declaration-and-initialization/
+https://www.geeksforgeeks.org/multidimensional-arrays-in-c/
+https://en.wikipedia.org/wiki/Single-precision_floating-point_format
+
+*/
+
 //once again, i'll play around with it, and comment the results I get, so, both, me and you, the reader can get a good understanding of what I did. 
 #include <stdio.h>
 //Added the following header to be able to play with the macros of variables. 
@@ -656,6 +679,144 @@ printf("\n%d\n%d\n%d\n%d",array3d2[2][1][2],array3d2[0][1][0],array3d2[1][0][1],
 seems correct to me. There are uninitialized slots, and it seems that uninitialized integers are on 0 by default. 
 so, that's all for today. See you in a bit.g
 */
+
+printf("=========================================Added Tuesday, the Seventh of January 2025=========================================");
+/*
+Today, i'll like to see shorts ints.and maybe long ints too.  
+*/
+printf("======================short zone(put one on, even if its freezing)======================");
+short billy;
+billy = 16;
+short shortmin = SHRT_MIN;
+short shortmax = SHRT_MAX;
+short lämp = 11111;
+
+printf("\n%hd\n%hd\n%hd\n%hd",billy,shortmin,shortmax,lämp);
+
+short int billy_the_second = 1; 
+signed short billy_the_third = -1;
+signed short int billy_the_kid = -3000;
+
+printf("\n%hd\n%hd\n%hd",billy_the_second,billy_the_third,billy_the_kid);
+
+unsigned short billy_the_one_too_many = 10;
+unsigned short int billy_the_two_too_many = -1;
+printf("\n%u\n%u",billy_the_one_too_many,billy_the_two_too_many);
+/*
+here, we can see the famous bug, in billy_the_two_too_many, that turn an unsigned variable into it's max 
+value, whenever it hit a negative value. however, there's something else i'll like to try with this bug. 
+*/
+unsigned short int billy_the_two_two_many = -5535;
+printf("\n%u",billy_the_two_two_many);
+/*
+hehe, it works. you can "substract" your desired number from the variable once it hits a negative value. 
+here, even thought we substracted 5535, we still start at 0, so, it will actually not be 60 000, but 60 001.
+*/
+short yul[]={0,1,2,3};
+printf("\n%hd",yul[2]);
+/*
+we can of course declare an initialize arrays into those types of variable too. not specifying the size
+of the array, declare and initializes it still. It's just that it's not of a fixed sized. 
+but i thinks we'll learn about that later. 
+*/
+
+printf("======================long zone(i promise it won't be THAT long)======================");
+
+long g;
+g = 2021489752;
+long ng = -3;
+long ong = LONG_MIN;
+long Long = LONG_MAX;
+unsigned long llong = 4000000123;
+unsigned long int lllong = -1; 
+long llllong [2][3]={
+	{1,2,3,},
+	{3,2,1}
+};
+printf("\n%li\n%ld\n%li\n%ld\n%ld\n%lu\n%lu",g,ng,ong,Long,llong,lllong,llllong[1][2]);
+
+printf("======================long long zone======================");
+
+long long long_long ; 
+long_long = 1;
+long long int long_loong = -1;
+signed long long long_looong = 60065;
+signed long long int long_loooong = -351983773;
+long long long_looooong = LLONG_MAX;
+long long long_loooooong = LLONG_MIN;
+unsigned long long long_looooooong= -1;
+unsigned long long int long_loooooooong = ULLONG_MAX;
+
+printf("\n%lli\n%lld\n%lli\n%lld\n%lli\n%lld\n%llu\n%llu",long_long,long_loong,long_looong,long_loooong,long_looooong,long_loooooong,long_looooooong,long_loooooooong);
+
+long long long_matriiiiiix[2][2]={8,7,5,4};
+printf("\n%lli",long_matriiiiiix[1][0]);
+
+/*
+looks like we still got time to float. 
+this artcile will help you to understand into more details how the calculation of a float works. 
+https://en.wikipedia.org/wiki/Single-precision_floating-point_format
+It's a bit hard to understand, but you'll get it, i'm convinced. 
+1 : signed part (1) ==> + or -. 
+2 : exponent (8) ==> value from -126 to 127, with a +127 biais to  fit it in the 0 to 255 range. 
+ -126 are number under 0, and +127 are number above 0. 
+3 : fraction (23) : when number converted in binary, then into scientific notation, is the precision,
+meaning every number (in binary scientific notation of entered number) after the coma. 1.1 ==> 1 is stored. 
+1.010101010101010101 ==> 010101010101010101 is stored. 
+end result is fraction, exponent exponent, and the sign. 
+was not as easy as expected. 
+*/
+
+printf("====================================float zone====================================");
+printf("===============================Added the 15th of January 2025===============================");
+
+float flottant = 1.2;
+float bateau;
+bateau = 30000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+float barque = 1.123456789123456789123456789123456787896565235889658967569879532589856985659123456789123456789;
+float navire = 78987879878978.5555555; 
+
+printf("\n%f\n%f\n%f\n%f",flottant,barque,bateau,navire);
+
+/*
+here, we can see that bateau is waaaay ahead of the limit of declaration, and is hence, not initialized. 
+However, barque is under the limit, being rounded up to 1.123457.
+now, let's play with doubles, being the double of a 32 bits float, being a 64 bits float. 
+BUT. before. Let's play with the other format specifiers of floats.  
+*/
+
+printf("\n%f\n%g\n%a\n%e",navire,navire,navire,navire);
+
+printf("=============================Double Zone=============================");
+double gros_bateau; 
+gros_bateau = 5.89; 
+double gros_navire = 30000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 ; 
+double grosse_barque = 789456123.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001 ;  
+double grosse_flottante = 777777777777777777777777777777.8888888888888888888888888888888888 ;
+
+printf("\n%lf\n%lf\n%lf\n%lf",gros_bateau,gros_navire,grosse_flottante,grosse_barque); 
+printf("\n%lf\n%la\n%e\n%g",gros_bateau,gros_bateau,gros_bateau,gros_bateau);
+
+/*
+interestingly, the gros navire doesn't create an error, it display anyway, but not the seemingly correct, 
+or expected thing. 
+After seeking knowledge, (aka chatgpt, lol), i can safely tell you that, the behaviour, is expected,
+and i was frankly trying to get to it : Overflow of the value. Meaning that gros_navire variable is too big
+for the 32 bits assigned to one (or 64 for a double) variable. 
+Now, let's play with long double. supposedly, it's along 96, or 128 bits. let's seek knowledge. 
+apparently, since the variable is overflowed, it's assigning an infinity value to the variable, and, 
+when asking to displays it, since it can't diplsays an infonite value, it displays the 0.00000... 
+*/
+printf("\n==================================long double zone==================================");
+long double spaceship; 
+spaceship = 127892.1565; 
+long double mothership = 30000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+long double pursuit_spacecraft = 12.2;
+long double stealth_ship = 1.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001 ; 
+ printf("\n%Lf\n%Lf\n%Lf\n%Lf\v",spaceship,mothership,pursuit_spacecraft,stealth_ship); 
+ printf("\n%Lf\n%La\n%Le\n%Lg",spaceship,spaceship,spaceship,spaceship);
+ 
+
 
 return 0;
 }
