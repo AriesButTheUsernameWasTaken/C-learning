@@ -1,3 +1,8 @@
 Things i've noted but didn't tried to understand so far, 
 and that i'll have to dig later on : 
 -can't start the name of a variable with a number. 
+- How to add, or delete one or many array indexes. 
+	in every dimensions.
+-snprintf and printf course. what's the whole range of possibilities, 
+	and what are they useful for. 
+- differences between a console, a compiler, MingW, GCC, and else. Need to dive deeper.
