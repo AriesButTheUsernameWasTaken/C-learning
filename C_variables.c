@@ -868,8 +868,108 @@ the %zu format specifier is used as a universal format specifiers to get the siz
 no matter the configuration. 
 */
 printf("\n%zu",sizeof(long double));
+printf("\n=====================================Added Saturday the 18th of January 2025=====================================");
 
+/*
+It appears that since i'm running on a 64 bits long double system, instead of the usually used 128, or 80, 
+the long double is misinterpredted by the compiler, and then nullified to 0. But this is something that, 
+to my opinion, should also be done using the other format specifiers. And we see it actually works, when using
+the other format specifier. So, that's not a size problem. It could be part of it, but there is also something 
+else. The problem seems to be more with the library who's handling the %Lf format specifier. Which, since it's 
+a 64 bits system, could be messed up, maybe because it's expecting a 128 or 80 bits format. 
+apparently snprintf is also a thing, but i'll have to dig on it later. 
+howerver, since i'm using MinGW, Apparently, it's why my long doubles are interpreted as floats. 
+While this doens't answer why only %Lf don't work while other long double specifics format specifiers (Le,La,Lg)
+do works, it gives me clues on why %Lf don't work : It's the wrong format specifier. 
+*/
+printf("\n%f",spaceship);
+/*
+which doesn't seems to work either. Guess we won't work with long double. -_-
+Just to confirm, I'll also like to, dig arrays over floats and doubles. 
+*/
+float barge[] ={1.2,0.003,789456123,444.412385670};
+double big_barge[] = {1.2,1.3,0.000001};
+printf("\n%f\n%lf",barge[2],big_barge[0]); 
 
+/*
+Just for the fun, I'll also want to try something else. more than 3 dimensionnal array. Let's try 5. 
+*/
+int five_d_chess[2][2][2][3][4]={
+/*
+so, two instances, of 2 copy of 2 dimensionnal 3 rows, 4 column array. 
+*/
+//first instance : 
+	{
+		//first copy : 
+		{
+			//first dimension : 
+			{
+				{1,2,3,4},
+				{5,6,7,8},
+				{9,10,11,12}
+			},
+			//second dimension : 
+			{
+				{13,14,15,16},
+				{17,18,19,20},
+				{21,22,23,24}
+			}
+		},
+		//second copy
+		{
+			//second copy first dimension 
+			{
+				{25,26,27,28},
+				{29,30,31,32},
+				{33,34,35,36}
+			},
+			//second copy second dimension
+			{
+				{37,38,39,40},
+				{41,42,43,44},
+				{45,46,47,48}
+			}
+		}
+	},
+	//second instance
+	{
+		//second instance first copy
+		{
+			//second instance first copy first dimension
+			{
+				{49,50,51,52},
+				{53,54,55,56},
+				{57,58,59,60}
+			},
+			//second instance first copy second dimension
+			{
+				{61,62,63,64},
+				{65,66,67,68},
+				{69,70,71,72}
+			}
+		},
+		//second instance second copy
+		{
+			//second instance second copy first dimension
+			{
+				{73,74,75,76},
+				{77,78,79,80},
+				{81,82,83,84}
+			},
+			//second instance second copy second dimension
+			{
+				{85,86,87,88},
+				{89,90,91,92},
+				{93,94,95,96}
+			}
+		}
+	}
 
+};
+printf("\n%d",five_d_chess[1][0][0][2][3]);
+/*
+it works. We can do above 3d arrays. 
+I thinks that settles it for variables in C. At least for now. 
+*/
 return 0;
 }
