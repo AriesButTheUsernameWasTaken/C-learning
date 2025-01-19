@@ -1,5 +1,7 @@
 //here's the tutorial followed in this code : https://www.youtube.com/watch?v=aIQk1O08zpg&list=PLZPZq0r_RZOOzY_vR4zJM32SqsSInGMwe&index=4
 /*
+And the one for constants : 
+https://www.youtube.com/watch?v=Y17nTXAWBqs&list=PLZPZq0r_RZOOzY_vR4zJM32SqsSInGMwe&index=7
 Archives used : 
 https://stackoverflow.com/questions/50841881/why-is-the-format-in-printf-marked-as-restrict
 https://en.wikipedia.org/wiki/C_data_types
@@ -19,6 +21,7 @@ https://en.wikipedia.org/wiki/UTF-8
 https://www.codingeek.com/tutorials/c-programming/2d-character-array-string-array-declaration-and-initialization/
 https://www.geeksforgeeks.org/multidimensional-arrays-in-c/
 https://en.wikipedia.org/wiki/Single-precision_floating-point_format
+
 
 */
 
@@ -971,5 +974,20 @@ printf("\n%d",five_d_chess[1][0][0][2][3]);
 it works. We can do above 3d arrays. 
 I thinks that settles it for variables in C. At least for now. 
 */
+
+printf("========================Added Sunday, the 19th of January 2025========================");
+/*
+Guess what, we still had something to dig. It's gonna be quick. 
+Constants. in a variable focused lesson. using the following video. 
+https://www.youtube.com/watch?v=Y17nTXAWBqs&list=PLZPZq0r_RZOOzY_vR4zJM32SqsSInGMwe&index=7
+*/
+const int const_earth_rotation_speed = 1600; 
+//const_earth_rotation_speed = 1500 ;  
+/*
+this, when decommented, produce the following error :  
+error: assignment of read-only variable 'const_earth_rotation_speed'
+Which guard us from changing the value of a constant. 
+*/
+
 return 0;
 }
