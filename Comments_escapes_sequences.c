@@ -1,6 +1,8 @@
 #include <stdio.h>
 int main(){
     //Tutorial serie used, cause why not, that may interest ya https://www.youtube.com/watch?v=8Vt9k0bh_Q8&list=PLZPZq0r_RZOOzY_vR4zJM32SqsSInGMwe&index=3
+    //video for the minimum width format specifier : 
+    // https://www.youtube.com/watch?v=iLZOL-hmr7M&list=PLZPZq0r_RZOOzY_vR4zJM32SqsSInGMwe&index=6
     //like in every other language, looks like its the // who does te job 
     /*great. 
     multiline commentaries. 
@@ -91,5 +93,21 @@ printf("=======================================added December 19th, 2024========
 //to print the special character %, it seems you need to escape it, right like this : 
 printf("\n%%");
 
+printf("=====================================Added Sunday the 19th of january 2025=====================================");
+/*
+Since i now know what a format specifier is, i think it is also relevant to add in this file the only format 
+that seems to be more about displaying rather that formatting. Or at least, that's how i see it. 
+it's the minimum field width, as seen in this video : https://www.youtube.com/watch?v=iLZOL-hmr7M&list=PLZPZq0r_RZOOzY_vR4zJM32SqsSInGMwe&index=6
+*/
+int price_a = 499; 
+float price_b = 8.12;
+char price_c[] = "7.45$";
+
+printf("\n%10d\n%10f\n%10s",price_a,price_b,price_c);
+/*
+We can see the prices being aligned on a identiqual defined space. 
+to align it on the left, just do the same, with negative number in the format specifier. 
+*/
+printf("\n%-10d\n%-10f\n%-10s",price_a,price_b,price_c);
    return 0 ;
 } 
