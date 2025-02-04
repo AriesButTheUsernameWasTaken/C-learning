@@ -27,6 +27,7 @@ int a = 10;
 int b = 12;
 int c = 7;
 int d = 800;
+int e = 401; 
 int results; 
 printf("\n======================Changing value without operations zone======================");
 /*
@@ -65,7 +66,7 @@ But for the sake of entertainment, let's try to break it :
 printf("\n%d",results);
 results = 0 ; 
 
-results + d = a + b ; 
+//results + d = a + b ; 
 /*
 As Expected, this won't work. Not because the compiler can't compute results + d, or a+b. 
 This has to do with values types. when throwing a = there's two sides. 
@@ -82,12 +83,20 @@ While this can be done in many other way, I think, trying to pass an operation a
 variables names will, first results in the left operation not being computed, but also, trying to allocate 
 two memory spaces at the same time, while only one is expected. 
 
-R values are the right side of the =.   
+R values are the right side of the =7.
+It's whatever will be put into the variable.    
 
 The following article may explain this better than me, so, feel free to check it out : 
 https://www.geeksforgeeks.org/lvalue-and-rvalue-in-c-language/
+
+Additionnally, consider the following :  
 */
 
+//a + b = c ; 
+
+/*
+It also create the same error, for the same reasons. 
+*/
 
 
 /*
@@ -102,7 +111,56 @@ printf("\n======================Substractions zone======================");
 /*
 same operating logic. 
 */
+results = a-b;
 
+printf("\n==========================Added Wednesday the 29th of January 2025==========================");
+printf("\n%d",results);
+results = 0 ;
+/*
+since it's all signed integers, they can go negative. 
+*/
+
+printf("\n===============================Multiplication zone===============================");
+/*
+still the same logic.
+*/
+results = a*b;
+printf("\n%d",results);
+results = 0 ;
+
+printf("\n===============================Division zone===============================");
+/*
+Here lies some traps (are they gays ? who knows). Let's see them :  
+First, let's try a simple division. 
+*/
+results = d/a;
+printf("\n%d",results);
+
+/*
+I purposefully choose numbers that would not end up in a floating result after the division, so it can stay
+in the scope of an integer. However, let's now try one that doesn't end up like this. 
+*/
+results = a/c;
+/*
+10 on 7, will give a result of 1.4285714285714285714285714285714. 
+Far from the scope of an integer. 
+*/
+printf("\n%d",results);
+/*
+so, what happens here, is that, since my results is an integer, i can't store floating points. 
+So it just round it to just the integer part. 
+What i'll like to see, is that what happens if our floating point is above 1.5, to see if it rounds it up to 
+the superior value. 
+*/
+results = d/e;
+
+printf("\n%d",results);
+printf("=======================================\nAdded Tuesday the 4th of February 2025=======================================");
+/*
+as we can see, the value of the division isn't actually rounded neither up or down. It's just the integer part 
+that's taken as the actual value. 
+let's 
+*/
 
 return 0; 
 }
