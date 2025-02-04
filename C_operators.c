@@ -28,7 +28,12 @@ int b = 12;
 int c = 7;
 int d = 800;
 int e = 401; 
+float float_d=d;
+float float_e=e;
+float f = 1.3;
+float g = 2.7;
 int results; 
+float results_float;
 printf("\n======================Changing value without operations zone======================");
 /*
 We can already start with a simple thing :  
@@ -107,6 +112,31 @@ printf("\n%d",results);
 /*
 now, this was pretty simple, so, let's just continue.
 */
+printf("\n=======================================Added Tuesday the 4th of February 2025=======================================");
+/*
+let's forget simplicity. let's try floats. 
+*/
+results_float = f+g+g;
+printf("\n%f",results_float);
+
+/*
+still, pretty simple. Now.
+let's try cross types addition. 
+*/
+results = a + g; 
+printf("\n%d",results);
+
+/*
+as we can see, and will see again below, it may not be calculated as an integer, but, since it is stored as one, 
+it is also displayed as one, truncating the floating part. So, let's try something else. 
+*/
+results_float = a + g;
+printf("\n%f",results_float);
+/*
+and now, as we can see, the floating part is not truncated. we made a cross types calculation, and stored it 
+in the correct data type, so that we can actually have the result correctly displayed. 
+*/
+
 printf("\n======================Substractions zone======================");
 /*
 same operating logic. 
@@ -127,6 +157,22 @@ still the same logic.
 results = a*b;
 printf("\n%d",results);
 results = 0 ;
+
+printf("\n=======================================Added Tuesday the 4th of February 2025=======================================");
+
+/*
+buuuuuuuut. We also have FLOATS. 
+let's try. 
+trying to store a floating point in an integer would only results in the truncation of the floating value.
+And, as explained in the division zone, trying to calculate integers between themselves and the storing 
+the result in a float will also truncate the floating part. Because it is calculated as integers. 
+*/
+results_float =f*g;
+printf("\n%f",results_float);
+
+
+
+
 
 printf("\n===============================Division zone===============================");
 /*
@@ -155,11 +201,31 @@ the superior value.
 results = d/e;
 
 printf("\n%d",results);
-printf("=======================================\nAdded Tuesday the 4th of February 2025=======================================");
+printf("\n=======================================Added Tuesday the 4th of February 2025=======================================");
 /*
 as we can see, the value of the division isn't actually rounded neither up or down. It's just the integer part 
 that's taken as the actual value. 
-let's 
+let's now try to concatenate the result of a division into a float. 
+up there, where i've declared my variables, i'll declare a result variable but as a float. (results_floats)
+and we will try the same division. 
+*/
+results_float = d/e;
+printf("\n%f",results_float);
+
+/*
+as we can also realize here, the division, while being stored in a float, does not contain a significant 
+floating value. Or, at least, not the one expected. 
+that is because, divisions are operated following the rules of the declared variables types. 
+here, we have only integers. We can store our data in a float, the value stored, since we only have integers
+will be calculated as an integer, then stored as a float. 
+According to this, to have a divisions calculated as floats, we will first need to store our integers as floats. 
+*/
+float_d = d;
+float_e = e;
+results_float = float_d/float_e;
+printf("\n%f",results_float);
+/*
+we finally have our floating result. 
 */
 
 return 0; 
