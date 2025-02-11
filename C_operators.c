@@ -15,6 +15,8 @@ We may learn quite a few things within it. Will it be fun ? Well, for me, surely
 
 
 #include <stdio.h>
+//Added the following header to be able to play with booleans variables. 
+#include <stdbool.h>
 int main(){
 printf("======================Arithmetic operators zone======================");
 
@@ -34,6 +36,8 @@ float f = 1.3;
 float g = 2.7;
 int results; 
 float results_float;
+bool shambles = true; 
+bool stable = false;
 printf("\n======================Changing value without operations zone======================");
 /*
 We can already start with a simple thing :  
@@ -137,6 +141,25 @@ and now, as we can see, the floating part is not truncated. we made a cross type
 in the correct data type, so that we can actually have the result correctly displayed. 
 */
 
+printf("\n==========================Added Tuesday the 11th of February 2025==========================");
+/*
+still on the path of testing the additions and complementarities between différent types of variables, let's
+mess with booleans. 
+*/
+
+results = stable + shambles; 
+printf("\n%d",results);
+/*
+Booleans are stored on either 1 or 0, in regard if their value are true, ergo 1, on our case, it's the variable 
+shambles, or 0, which is the statment false, and which is, here, our stable variable. 
+But, since our result is an integer, and, booleans are stored as integer, with just the limitation of range, 
+0 to 1, we can actually add them together, and get the expected result, as if it was a simple integers addition. 
+We can also try other things, to get a better understanding of this. 
+*/
+results = stable + stable + stable; 
+printf("\n%d",results);
+results = shambles + shambles ;
+printf("\n%d",results);
 printf("\n======================Substractions zone======================");
 /*
 same operating logic. 
