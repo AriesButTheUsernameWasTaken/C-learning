@@ -8,3 +8,4 @@ and that i'll have to dig later on :
 - differences between a console, a compiler, MingW, GCC, and else. Need to dive deeper.
 - dig the inversion operation breaking bad meme. 
 - values types : Rvalues, Lvalues, and other if there are. 
+- char* (chack if not already clarified in C_variables)
