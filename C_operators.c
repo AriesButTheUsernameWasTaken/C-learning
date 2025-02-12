@@ -34,10 +34,14 @@ float float_d=d;
 float float_e=e;
 float f = 1.3;
 float g = 2.7;
-int results; 
-float results_float;
 bool shambles = true; 
 bool stable = false;
+char text[] = "maybe i'm more than a vampire.";
+char dextre[] = "something completely else."
+int results; 
+float results_float;
+char results_char[];
+
 printf("\n======================Changing value without operations zone======================");
 /*
 We can already start with a simple thing :  
@@ -160,6 +164,20 @@ results = stable + stable + stable;
 printf("\n%d",results);
 results = shambles + shambles ;
 printf("\n%d",results);
+
+printf("\n============================Added Wednesday the 12th of February 2025============================");
+/*
+we already have added floats, and booleans. Playing with the macros won't be that much more interesting,
+however, maybe playing with char can be funny. 
+*/
+results  = text + dextre;
+printf("\n%d",results);
+
+/*
+    error: invalid operands to binary + (have 'char *' and 'char *')
+This error is, once again, totally expectable, since we're adding two char variable into a integer one. 
+*/
+
 printf("\n======================Substractions zone======================");
 /*
 same operating logic. 
