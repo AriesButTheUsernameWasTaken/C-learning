@@ -17,6 +17,8 @@ We may learn quite a few things within it. Will it be fun ? Well, for me, surely
 #include <stdio.h>
 //Added the following header to be able to play with booleans variables. 
 #include <stdbool.h>
+//Added the following header to be able to play with strings
+#include <string.h>
 int main(){
 printf("======================Arithmetic operators zone======================");
 
@@ -37,10 +39,10 @@ float g = 2.7;
 bool shambles = true; 
 bool stable = false;
 char text[] = "maybe i'm more than a vampire.";
-char dextre[] = "something completely else."
-int results; 
+char dextre[] = "something completely else.";
+int results;  
 float results_float;
-char results_char[];
+char results_char[100];
 
 printf("\n======================Changing value without operations zone======================");
 /*
@@ -170,13 +172,41 @@ printf("\n============================Added Wednesday the 12th of February 2025=
 we already have added floats, and booleans. Playing with the macros won't be that much more interesting,
 however, maybe playing with char can be funny. 
 */
-results  = text + dextre;
+//results  = text + dextre;
 printf("\n%d",results);
 
 /*
     error: invalid operands to binary + (have 'char *' and 'char *')
 This error is, once again, totally expectable, since we're adding two char variable into a integer one. 
 */
+printf("=========================Added Thursday the 13th of January 2025=========================");
+//results_char = text + dextre;
+printf("\n%s",results_char);
+
+/*
+We see, that, even when trying to store two char in another char, it still doesn't works.
+I am now, about to seek knowledge. 
+It apprears that there's two reasons, happenning at the same time here. 
+The first being that, since char arrays devays into pointers, and that, since pointers are designating a 
+data address, or memory address, they can't be additionned together. (cause, adding one memory address to 
+another one would lead to undefined behaviour). Or at least, that's how i understand it, since i still don't 
+know what pointers are. 
+The other thing happening is that, arithmetics operators are designed only for arithmetics values, hence int, 
+floats, longs, and booleans ( since they're stored as integers). char, however, do not correspond to any of 
+those types, and can't be "added" throught arithmetic operators. 
+to "add" one string to another, one would need to use strcpy. 
+*/
+strcpy(results_char, text);
+printf("\n%s",results_char);
+strcpy(results_char, dextre);
+printf("\n%s",results_char);
+
+/*
+ error: array size missing in 'results_char'
+
+ yeah. remember to initialize your arrays kids. Or at least define their size. Otherwise the puter won't be happy.
+*/
+
 
 printf("\n======================Substractions zone======================");
 /*
